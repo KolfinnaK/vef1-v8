@@ -6,7 +6,9 @@
     "dev": "browser-sync start --server --files scripts.js index.html",
     "copy:html": "cpy ./*.html ./build/",
     "copy:js": "cpy ./*.js ./build/",
-    "build": "concurrently npm:copy:*"
+    "copy:css": "cpy ./*.css ./build/",
+    "minify:js": "terser scripts.js --output build/scripts.min.js",
+    "build": "concurrently npm:copy:* npm:minify:js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-vue": "^9.29.1",
     "globals": "^15.11.0",
+    "terser": "^5.36.0",
     "typescript-eslint": "^8.11.0"
   }
 }
